@@ -1,13 +1,3 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 8f9a963..9a2cda3 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -44,4 +44,4 @@ add_subdirectory(xtcdata)
- add_subdirectory(psana)
- add_subdirectory(psdaq)
- add_subdirectory(pgp)
--add_subdirectory(drp)
-+# add_subdirectory(drp)
 diff --git a/psdaq/CMakeLists.txt b/psdaq/CMakeLists.txt
 index ef17a9e..3935f37 100644
 --- a/psdaq/CMakeLists.txt
