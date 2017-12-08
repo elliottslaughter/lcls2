@@ -3,6 +3,15 @@ sudo: required
 dist: trusty
 compiler:
   - gcc
+
+# Install system dependencies.
+before_install:
+  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq g++-7
+  - export CXX=g++-7 CC=gcc-7
+
+# Install Conda environment.
 install:
   - export CONDA_PREFIX=$PWD/conda
   - export REL_DIR=$CONDA_PREFIX/myrel
@@ -11,6 +20,8 @@ install:
   - bash Miniconda3-latest-Linux-x86_64.sh -b -p $CONDA_PREFIX
   - conda update -y conda
   - conda create -y -p $REL_DIR python=3.5 cmake h5py ipython numpy
+
+# Build and test.
 script:
   - patch -p1 -i travis.patch
   - mkdir build
