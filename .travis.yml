@@ -1,0 +1,20 @@
+language: cpp
+sudo: required
+dist: trusty
+compiler:
+  - gcc
+install:
+  - export CONDA_PREFIX=$PWD/conda
+  - export REL_DIR=$CONDA_PREFIX/myrel
+  - export PATH=$REL_DIR/bin:$CONDA_PREFIX/bin:$PATH
+  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+  - bash Miniconda3-latest-Linux-x86_64.sh -b -p $CONDA_PREFIX
+  - conda update -y conda
+  - conda create -y -p $REL_DIR python=3.5 cmake h5py ipython numpy
+script:
+  - patch -p1 -i travis.patch
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make -j2
+  - make test
