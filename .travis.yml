@@ -34,7 +34,6 @@ install:
 
 # Build and test.
 script:
-  # - patch -p1 -i travis.patch
   - mkdir build
   - cd build
   - cmake ..
