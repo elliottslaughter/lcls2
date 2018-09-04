@@ -15,4 +15,12 @@ env:
 
 script:
   - export IMAGE=slaclcls/travis:$OS-py$PYVER
-  - docker run -v $PWD:/build -ti $IMAGE env CONDA_ENV=$CONDA_ENV PYVER=$PYVER CC=gcc-7 CXX=g++-7 /build/run_travis.sh
+  - |
+    if [[ $OS == ubuntu16.04 ]]; then
+      export CC=gcc-7
+      export CXX=g++-7
+    else
+      export CC=gcc
+      export CXX=g++
+    fi
+  - docker run -v $PWD:/build -ti $IMAGE env CONDA_ENV=$CONDA_ENV PYVER=$PYVER CC=$CC CXX=$CXX /build/run_travis.sh
