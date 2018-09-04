@@ -23,4 +23,4 @@ script:
       export CC=gcc
       export CXX=g++
     fi
-  - docker run -v $PWD:/build -ti $IMAGE -e CONDA_ENV -e PYVER -e CC -e CXX bash -l /build/run_travis.sh
+  - docker run -v $PWD:/build -e CONDA_ENV -e PYVER -e CC -e CXX -ti $IMAGE bash -l /build/run_travis.sh
