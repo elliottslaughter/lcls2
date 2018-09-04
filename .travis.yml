@@ -6,11 +6,11 @@ services:
 
 env:
   global:
-    - IMAGE: slaclcls/travis:test
     - CONDA_ENV: myrel
   matrix:
-    # - PYVER=2.7
+    - PYVER=2.7
     - PYVER=3.6
 
 script:
+  - export IMAGE=slaclcls/travis:ubuntu16.04-py$PYVER
   - docker run -v $PWD:/build -ti $IMAGE env CONDA_ENV=$CONDA_ENV PYVER=$PYVER CC=gcc-7 CXX=g++-7 /build/run_travis.sh
