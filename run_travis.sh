@@ -11,7 +11,7 @@ PYVER=$(python -c "import sys; print(str(sys.version_info.major)+'.'+str(sys.ver
 export PYTHONPATH="$PWD/install/lib/python$PYVER/site-packages"
 
 if [[ $PYVER == 2.7 ]]; then
-    ./build_python2_psana.py
+    ./build_python2_psana.sh
     nosetests psana/psana/tests
 elif [[ $PYVER == 3.* ]]; then
     ./build_travis.sh -p install
