@@ -5,7 +5,11 @@ set -e
 source activate $CONDA_ENV
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
-export PYTHONPATH=$PWD/install/lib/python$PYVER/site-packages
+export PATH="$PWD/install/bin:$PATH"
+
+PYVER=$(python -c "import sys; print(str(sys.version_info.major)+'.'+str(sys.version_info.minor))")
+export PYTHONPATH="$PWD/install/lib/python$PYVER/site-packages"
+
 if [[ $PYVER == 2.7 ]]; then
     ./build_python2_psana.py
     nosetests psana/psana/tests
