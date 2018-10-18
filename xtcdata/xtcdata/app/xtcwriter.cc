@@ -40,7 +40,7 @@
 
 using namespace XtcData;
 #define BUFSIZE 0x4000000
-#define NEVENT 2
+#define NEVENT 100
 
 
 class FexDef:public VarDef
